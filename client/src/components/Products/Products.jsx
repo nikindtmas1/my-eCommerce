@@ -4,8 +4,8 @@ import { Grid } from "@material-ui/core";
 import Product from './Product/Product'
 
 const products = [
-    { id: 1, name: 'Shoes', description: 'Running Shoes', price: '$5' },
-    { id: 2, name: 'Macbook', description: 'Apple Macbook', price: '$10' }
+    { id: 1, name: 'Shoes', description: 'Running Shoes', price: '$5', image: 'https://www.sportsdirect.com/images/marketing/btq-run-mens-run-shoes-500x356.jpg' },
+    { id: 2, name: 'Macbook', description: 'Apple Macbook', price: '$10', image: 'https://www.apple.com/v/macbook-pro-14-and-16/a/images/meta/macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png?202112210140' }
 ]
 
 const Products = () => {
