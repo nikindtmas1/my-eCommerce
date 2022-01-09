@@ -4,7 +4,7 @@ import { Container, Typography, Button, Grid } from '@material-ui/core';
 import useStyles from './styles';
 
 const Cart = ({ cart }) => {
-    const isEmpty = !cart.line_items.length;
+    const isEmpty = cart.line_items.length === 0;
     const classes = useStyles();
 
     const EmptyCart = () => {
