@@ -5,7 +5,7 @@ import useStyles from './styles';
 import CartItem from './CartItem/CartItem';
 
 const Cart = ({ cartData }) => {
-    console.log(cartData);
+   
     //const isEmpty = !cartData.line_items.length;
     const classes = useStyles();
 
