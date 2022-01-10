@@ -12,9 +12,11 @@ const Cart = ({ cartData, handleUpdateCartQty, handleRemoveFromCart, handleEmpty
     const classes = useStyles();
 
     const EmptyCart = () => {
+        return (
         <Typography variant='subtitle1' >You have no items in your shopping cart, start adding same!
-            <Link to='/' className={classes.link}>start adding some</Link>!
+            <Link to='/' className={classes.link}> start adding some </Link>!
         </Typography>
+        )
     };
 
     const FilledCart = () => {
