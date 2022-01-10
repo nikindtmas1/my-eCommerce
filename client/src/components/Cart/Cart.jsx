@@ -14,6 +14,7 @@ const Cart = ({ cartData }) => {
     };
 
     const FilledCart = () => {
+        return (
         <>
         <Grid container spacing={3}>
             {cartData.line_items.map((item) => (
@@ -32,6 +33,7 @@ const Cart = ({ cartData }) => {
                 </div>
         </div>
         </>
+        )
     };
 
     if(!cartData.line_items) return 'Loading...';
