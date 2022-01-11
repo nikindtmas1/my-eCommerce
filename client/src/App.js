@@ -52,7 +52,7 @@ const App = () => {
         fetchCart();
     }, []);
 
-   
+    
 
     return (
         <Router>
