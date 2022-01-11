@@ -15,6 +15,12 @@ const AddressForm = () => {
 
     const methods = useForm();
 
+    const fetchShipingCountries = async (checkoutTokenId) => {
+        const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
+
+        setShippingCountries(countries);
+    }
+
     const onSubmit = () => {
 
     }
@@ -32,7 +38,7 @@ const AddressForm = () => {
                         <FormInput required name='email' label='Email' />
                         <FormInput required name='city' label='City' />
                         <FormInput required name='zip' label='ZIP / Postal code' />
-                        <Grid item xs={12} sm={6}>
+                        {/* <Grid item xs={12} sm={6}>
                             <InputLabel>Shipping Country</InputLabel>
                             <Select value={} fullWidth onChange={}>
                                 <MenuItem key={} value={}>
@@ -55,7 +61,7 @@ const AddressForm = () => {
                                     Select Me
                                 </MenuItem>
                             </Select>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </form>
             </FormProvider>
