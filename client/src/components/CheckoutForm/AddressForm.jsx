@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
 import FormInput from './CustomTextField';
@@ -106,7 +107,7 @@ const AddressForm = ({ checkoutToken }) => {
                     </Grid>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <Button variant='outlined'>Back to Cart</Button>
+                                <Button component={Link} to='/cart' variant='outlined'>Back to Cart</Button>
                                 <Button variant='contained'> Next</Button>
                     </div>
                 </form>
