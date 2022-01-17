@@ -29,12 +29,13 @@ const Checkout = ({ cart }) => {
         generateToken();
     }, [cart]);
 
-    const Form = () => activeStep === 0 
-    ? <AddressForm checkoutToken={checkoutToken} next={next} />
-    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} />
-
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1)
+
+    const Form = () => activeStep === 0 
+    ? <AddressForm checkoutToken={checkoutToken} next={next} />
+    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} backStep={backStep} />
+
 
     
     const next = (data) => {
