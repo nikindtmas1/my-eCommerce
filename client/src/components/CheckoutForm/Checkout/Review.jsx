@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Typography, List, ListItem, ListItemText  } from '@material-ui/core';
 
 const Review = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Typography variant='h4' gutterBottom>Order summary</Typography>
+        </>
     )
 }
 
