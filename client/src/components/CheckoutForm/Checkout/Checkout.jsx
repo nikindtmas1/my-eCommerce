@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom';
 
 import { commerce } from '../../../lib/commerce';
 
@@ -16,6 +16,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
 
+    const history = useHistory();
+
     useEffect(() => {
         const generateToken = async () => {
             try {
@@ -23,7 +25,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
                 setCheckoutToken(token);
             } catch (error) {
-                console.log(error);
+                history.push('/')
             }
         }
 
@@ -71,6 +73,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
     return (
         <>
+        <CssBaseline />
             <div className={classes.toolbar} />
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
