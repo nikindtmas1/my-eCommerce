@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-import {commerce} from '../../../lib/commerce';
+import { commerce } from '../../../lib/commerce';
 
 import useStyles from './styles';
 import AddressForm from '../AddressForm';
@@ -18,11 +19,11 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     useEffect(() => {
         const generateToken = async () => {
             try {
-                const token = await commerce.checkout.generateToken(cart.id, { type: 'cart'});
-                
+                const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
+
                 setCheckoutToken(token);
             } catch (error) {
-                
+
             }
         }
 
@@ -32,23 +33,41 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1)
 
-    const Form = () => activeStep === 0 
-    ? <AddressForm checkoutToken={checkoutToken} next={next} />
-    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} />
+    const Form = () => activeStep === 0
+        ? <AddressForm checkoutToken={checkoutToken} next={next} />
+        : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} nextStep={nextStep} backStep={backStep} onCaptureCheckout={onCaptureCheckout} />
 
 
-    
+
     const next = (data) => {
         setShippingData(data);
 
         nextStep();
     }
 
-    const Confirmation = () => (
-        <div>
-            Confirmation
+    let Confirmation = () => order.customer ? (
+        <>
+            <div>
+                <Typography variant='h5'>Thank you for your pruchas, firstName lastName</Typography>
+                <Divider className={classes.divider} />
+                <Typography variant='subtitle2'>Order ref: ref</Typography>
+            </div>
+            <br />
+            <Button component={Link} to='/' variant='outlined' type='button'>Back to home</Button>
+        </>
+    ): (
+        <div className={classes.spinner}>
+            <CircularProgress />
         </div>
     );
+
+    if(error){
+        <>
+            <Typography variant='h5'>Error: {error}</Typography>
+            <br />
+            <Button component={Link} to='/' variant='outlined' type='button'>Back to home</Button>
+        </>
+    }
 
     return (
         <>
